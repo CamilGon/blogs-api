@@ -12,11 +12,11 @@ const User = (sequelize, DataTypes) => {
  
     },
  
-    display_name: {
+    displayName: {
  
       type: DataTypes.STRING,
- 
-      allowNull: false
+      allowNull: false,
+      field: 'display_name',
  
     },
  
@@ -43,16 +43,10 @@ const User = (sequelize, DataTypes) => {
     },
  
   }, {
- 
     tableName: 'users',
- 
     timestamps: false,
- 
+    underscored: true,
   })
- 
- 
- 
- 
   return model;
  
  }
