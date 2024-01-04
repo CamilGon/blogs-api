@@ -6,11 +6,13 @@ const Category = (sequelize, DataTypes) => {
       autoIncrement: true
     },
     name: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
+      allowNull: false,
     }
   }, {
     tableName: 'categories',
-    timestamps: false
+    timestamps: false,
+    underscored: true,
   });
 
   
