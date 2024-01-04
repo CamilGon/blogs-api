@@ -15,6 +15,7 @@ app.use(express.json());
 
 app.post('/login', userController.login);
 app.get('/user', validateToken, userController.getAllUsers);
+app.get('/user/:id', validateToken, userController.getUserById);
 app.post('/user', validateUser, userController.createUser);
 
 // É importante exportar a constante `app`,

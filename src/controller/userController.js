@@ -30,7 +30,6 @@ const createUser = async (req, res) => {
     res.status(400).json({ message: error.message });
   }
 };
-
 const getAllUsers = async (req, res) => {
   try {
     const users = await userService.getAllUsers();
@@ -39,9 +38,22 @@ const getAllUsers = async (req, res) => {
     res.status(500).json({ message: 'Failed to fetch users' });
   }
 };
+const getUserById = async (req, res) => {
+  const userId = req.params.id;
+  try {
+    const user = await userService.getUserById(userId);
+    if (!user) {
+      return res.status(404).json({ message: 'User does not exist' });
+    }
+    res.status(200).json(user);
+  } catch (error) {
+    res.status(500).json({ message: 'Failed to fetch user' });
+  }
+};
 
 module.exports = {
   login,
   createUser,
   getAllUsers,
+  getUserById,
 };
